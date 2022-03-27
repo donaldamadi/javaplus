@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/navigation/presentations/screens/bottom_navigation_bar.dart';
 import '../../../../shared_widgets/custom_button.dart';
 import '../../../../shared_widgets/custom_textfield.dart';
+import '../../../sign_up/presentation/screens/sign_up_screen.dart';
 
+// Stateful Widgets are widgets that can maintain their own state, used when there is going to be a change of state.
+// Stateless Widgets are widgets that can not maintain their own state.
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -17,6 +21,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      // Scaffold is a layout for the major Material Components.
       child: Scaffold(
           // resizeToAvoidBottomInset: false,
           body: Stack(
@@ -60,7 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       width: 200,
                       text: "Sign In",
                       onPressed: () {
-                        debugPrint("Sign In");
+                        goToSignIn();
                       },
                     ),
                     const SizedBox(height: 30),
@@ -80,9 +85,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       width: 200,
                       text: "Sign Up",
                       buttontype: Buttontype.ButtonType2,
-                      onPressed: () {
-                        debugPrint("Sign Up");
-                      },
+                      onPressed: () => goToSignUp(),
                     ),
                   ],
                 ),
@@ -96,13 +99,17 @@ class _SignInScreenState extends State<SignInScreen> {
 
   goToSignIn() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SignInScreen()));
+        context, MaterialPageRoute(builder: (context) => NavigationPage()));
   }
 
   goToSignUp() {
+    //pushAndRemoveUntil pushes to a new page and removes all other previous pages
+    //pop removes the current page and pushes the previous page
+    //popUntil removes all the pages until the given page is reached
+    //push takes you to the given page
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => SignInScreen()),
+        MaterialPageRoute(builder: (context) => SignUpScreen()),
         (Route<dynamic> route) => false);
   }
 }

@@ -81,14 +81,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(height: 30),
                     GestureDetector(
                       onTap: () => goToSignIn(),
-                      child: Text(
+                      child: const Text(
                         "Already have an account? Login",
                         style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w700,
                             color: Colors.blue),
                       ),
-                    )
+                    ),
+                    const SizedBox(height: 30),
                   ],
                 ),
               ),
@@ -100,6 +101,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   goToSignIn() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen()));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => SignInScreen()),
+        (Route<dynamic> route) => false);
   }
 }
