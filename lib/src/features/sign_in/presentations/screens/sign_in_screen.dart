@@ -1,4 +1,6 @@
+import 'package:finance/src/features/sign_in/presentations/controllers/sign_in_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../app/navigation/presentations/screens/bottom_navigation_bar.dart';
 import '../../../../shared_widgets/custom_button.dart';
@@ -15,6 +17,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  SignInController controller = Get.put(SignInController());
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -45,6 +48,19 @@ class _SignInScreenState extends State<SignInScreen> {
                             fontSize: 20, fontWeight: FontWeight.w700)),
                     SizedBox(height: 20),
                     Text("Sign in today with your email and password"),
+                    SizedBox(height: 20),
+                    Obx(() => Container(
+                          height: 100,
+                          child: ListView.builder(
+                            controller: controller.scrollController,
+                            itemCount: controller.weatherList.length,
+                            itemBuilder: (context, index) {
+                              return Text(
+                                  controller.weatherList[index]["humidity"].toString());
+                            },
+                          ),
+                        )),
+                    Obx(() => Text(controller.cityName.value)),
                     SizedBox(height: 50),
                     CustomTextField(
                       hintText: "Enter your email",
@@ -70,7 +86,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     const SizedBox(height: 30),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () => controller.getApi(),
                       child: const Text(
                         "Forgot Password?",
                         style: TextStyle(

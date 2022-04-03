@@ -12,14 +12,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GestureDetector(
+      // beha
+        child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Finance",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: OnboardingScreen(),
-    );
+    ));
   }
 
   // This widget is the root of your application.
