@@ -20,7 +20,7 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  bool obscureText = true;
+  bool obscureText = false;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ? TextInputType.phone
                     : null,
         controller: widget.controller,
-        obscureText: obscureText,
+        obscureText: widget.type == CustomButtonType.password ? true : false,
         decoration: InputDecoration(
           suffixIcon: widget.type == CustomButtonType.password
               ? GestureDetector(

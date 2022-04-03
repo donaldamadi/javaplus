@@ -49,29 +49,29 @@ class _SignInScreenState extends State<SignInScreen> {
                     SizedBox(height: 20),
                     Text("Sign in today with your email and password"),
                     SizedBox(height: 20),
-                    Obx(() => Container(
-                          height: 100,
-                          child: ListView.builder(
-                            controller: controller.scrollController,
-                            itemCount: controller.weatherList.length,
-                            itemBuilder: (context, index) {
-                              return Text(
-                                  controller.weatherList[index]["humidity"].toString());
-                            },
-                          ),
-                        )),
+                    // Obx(() => Container(
+                    //       height: 100,
+                    //       child: ListView.builder(
+                    //         controller: controller.scrollController,
+                    //         itemCount: controller.weatherList.length,
+                    //         itemBuilder: (context, index) {
+                    //           return Text(
+                    //               controller.weatherList[index]["humidity"].toString());
+                    //         },
+                    //       ),
+                    //     )),
                     Obx(() => Text(controller.cityName.value)),
                     SizedBox(height: 50),
                     CustomTextField(
                       hintText: "Enter your email",
-                      controller: emailController,
+                      controller: controller.emailController,
                       headerText: "Email",
                       type: CustomButtonType.email,
                     ),
                     const SizedBox(height: 30),
                     CustomTextField(
                       hintText: "Enter your Password",
-                      controller: passwordController,
+                      controller: controller.passwordController,
                       headerText: "Password",
                       type: CustomButtonType.password,
                     ),
@@ -81,7 +81,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       width: 200,
                       text: "Sign In",
                       onPressed: () {
-                        goToSignIn();
+                        // goToSignIn();
+                        controller.validateDetails();
                       },
                     ),
                     const SizedBox(height: 30),

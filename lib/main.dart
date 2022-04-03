@@ -1,5 +1,6 @@
 import 'package:finance/src/onboarding.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(GestureDetector(
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       // beha
-        child: MaterialApp(
+        child: GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Finance",
       theme: ThemeData(
